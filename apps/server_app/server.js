@@ -38,7 +38,7 @@ app.post('/ping', function(req, res){
         if (ping_value || clientname) {
             var pong_value = uuid().slice(24,32);
             log(`${hostname} received request from ${clientname}: ${ping_value}`);
-            log(`${hostname} responding to ${clientname}: ${ping_value} - ${pong_value}\n`);
+            log(`${hostname} responding to ${clientname} (${req.get('X-Real-IP')}): ${ping_value} - ${pong_value}\n`);
             res.send(JSON.stringify({
                 'clientname': clientname,
                 'servername': hostname,
